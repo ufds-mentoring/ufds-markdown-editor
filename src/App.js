@@ -2,6 +2,7 @@ import './App.css'
 import SplitPane from 'react-split-pane';
 import InputPane from './InputPane/InputPane'; 
 import OutputPane from './OutputPane/OutputPane';
+import Footer from './Footer/Footer';
 import { useState } from 'react'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <InputPane changeInputText={changeInputText} />
         <OutputPane inputText={theText} />
       </SplitPane>
+      <Footer />
     </div>
   );
 }
