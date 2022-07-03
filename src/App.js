@@ -5,13 +5,17 @@ import OutputPane from './OutputPane/OutputPane';
 import { useState } from 'react'
 
 function App() {
-  const [sizes, setSizes] = useState(['50%', '50%',])
+  const [theText, setTheText] = useState('')
+
+  function changeInputText(e){
+    setTheText(String(e.target.value))
+  }
 
   return (
     <div className="App">
-      <SplitPane split='vertical'>
-        <InputPane />
-        <OutputPane />
+      <SplitPane split='vertical' defaultSize="50%">
+        <InputPane changeInputText={changeInputText} />
+        <OutputPane inputText={theText} />
       </SplitPane>
     </div>
   );
