@@ -6,7 +6,7 @@ const InputPane = (props) => {
 
   return ( 
     <div className="InputPane">
-      <Textarea className='textarea' placeholder='Enter Markdown Here...' onChange={(e) => changeInputText(e)} />
+      <Textarea className='textarea' placeholder='Enter Markdown Here...' onChange={(e) => {changeInputText(e)}} />
     </div>
   );
 }
