@@ -3,6 +3,7 @@ import SplitPane from 'react-split-pane';
 import InputPane from './InputPane/InputPane'; 
 import OutputPane from './OutputPane/OutputPane';
 import Footer from './Footer/Footer';
+import Header from './Header/Header';
 import { useState } from 'react'
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
 
   return (
     <div className="App">
-      <SplitPane split='vertical' defaultSize="50%">
+      <Header />
+      <SplitPane split='vertical' style={{position: "relative"}} defaultSize="50%">
         <InputPane changeInputText={changeInputText} />
         <OutputPane inputText={theText} />
       </SplitPane>
