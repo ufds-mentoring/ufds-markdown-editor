@@ -33,7 +33,7 @@ This is a paragraph. *This text is italicized*. _This is also italicized_. **Thi
 1. ordered list
 1. cool
 
-~~strike through text~~. [Link text](https://example.com). \`inline code\`
+<del>strike through text</del>. [Link text](https://example.com). \`inline code\`
 
 \`\`\`cpp
 #include <block code.h>
