@@ -1,8 +1,20 @@
+import { Button, Checkbox } from 'evergreen-ui';
 import './Footer.css'
 
-const Footer = () => {
+const Footer = (props) => {
+
   return ( 
     <div className="Footer">
+      <div className="perfbar">
+        <Checkbox label="Boost performance" checked={props.perfboost} onChange={(e) => {props.setPerfboost(e.target.checked)}} />
+        {
+          props.perfboost ?
+          <>
+            <Button intent='success' appearance='primary' marginLeft={'20px'} onClick={props.clickBoost} marginTop={'8px'}>Recompile</Button>
+          </>
+           : null
+        }
+      </div>
       <div className="madetext">Made by Ishan Joshi</div>
       <div className="socialBar">
         <a href="mailto:ishanjoshi.games@gmail.com" target="_blank" className="emailsocial">
