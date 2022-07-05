@@ -9,6 +9,7 @@ import * as fm from 'front-matter'
 import { evaluateSync } from '@mdx-js/mdx'
 import * as provider from '@mdx-js/react'
 import * as runtime from 'react/jsx-runtime'
+import { ErrorBoundary } from 'react-error-boundary';
 
 const OutputPane = (props) => {
   const [mdxContent, setMdxContent] = useState('')
@@ -54,15 +55,30 @@ const OutputPane = (props) => {
     }
   }
 
+  function ErrorFallback({error, resetErrorBoundary}) {
+    useEffect(() => {
+      resetErrorBoundary()
+    },
+    [props.inputText])
+
+    return (
+      <div class="mdxerror">
+        <h3>Invalid MDX</h3>
+      </div>
+    )
+  }
+
   return (
     <div className="OutputPane">
-      <Heading marginBottom={minorScale(2)} size={900}>
-        {lesson}
-      </Heading>
-      <Heading marginBottom={minorScale(8)} size={600} color="#474d66">
-        {authorList}
-      </Heading>
-      {renderMdx()}
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Heading marginBottom={minorScale(2)} size={900}>
+          {lesson}
+        </Heading>
+        <Heading marginBottom={minorScale(8)} size={600} color="#474d66">
+          {authorList}
+        </Heading>
+        {renderMdx()}
+      </ErrorBoundary>
     </div>
   );
 }
