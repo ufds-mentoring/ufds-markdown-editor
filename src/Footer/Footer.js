@@ -1,10 +1,14 @@
-import { Button, Checkbox } from 'evergreen-ui';
+import { Button, Checkbox, TextInput } from 'evergreen-ui';
 import './Footer.css'
 
 const Footer = (props) => {
 
   return ( 
     <div className="Footer">
+      <div className='tabinput'>
+        <div>Tab Size: </div>
+        <TextInput marginLeft="5px" width="10%" defaultValue="4" type="number" onChange={(e) => props.changeTabSize(e.target.value)}/>
+      </div> 
       <div className="perfbar">
         <Checkbox label="Boost performance" checked={props.perfboost} onChange={(e) => {props.setPerfboost(e.target.checked)}} />
         {

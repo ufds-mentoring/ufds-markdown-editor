@@ -65,9 +65,13 @@
   border-style: solid;
   border-color: grey transparent transparent transparent;
 }
-
 .perfbar {
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
+}
+.tabinput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
