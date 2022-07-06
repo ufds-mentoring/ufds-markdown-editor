@@ -75,10 +75,18 @@ $$
   function setString(event){
     setTheString(event.target.value)
     changeInputText(event.target.value)
+    localStorage.setItem("sessionInput", event.target.value)
   }
 
   useEffect(() => {
-    changeInputText(theString)
+    const prevSessionString = localStorage.getItem("sessionInput")
+    if(prevSessionString !== null && prevSessionString !== ''){
+      setTheString(prevSessionString)
+      changeInputText(prevSessionString)
+    }
+    else{
+      changeInputText(theString)
+    }
   },
   [])
 
