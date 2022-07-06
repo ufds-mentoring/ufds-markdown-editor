@@ -1,9 +1,9 @@
-import { Textarea } from 'evergreen-ui';
+import { Textarea, Button } from 'evergreen-ui';
 import { useEffect, useState } from 'react';
 import './InputPane.css'
 
 const InputPane = (props) => {
-  const [theString, setTheString] = useState(`---
+  const defaultStr = `---
 title: The title of the lesson
 authors:
 - Authors separated
@@ -60,7 +60,8 @@ And this is a block:
 $$
 \\int_{-1}^1\\frac1x\\sqrt{\\frac{1+x}{1-x}}\\ln\\left(\\frac{2x^2+2x+1}{2x^2-2x+1}\\right)\\ \\mathrm dx 
 $$
-` )
+` 
+  const [theString, setTheString] = useState(defaultStr)
   const changeInputText = props.changeInputText
 
   function handleTab(event){
@@ -78,6 +79,12 @@ $$
     localStorage.setItem("sessionInput", event.target.value)
   }
 
+  function resetText(){
+    localStorage.clear()
+    setTheString(defaultStr)
+    changeInputText(defaultStr)
+  }
+
   useEffect(() => {
     const prevSessionString = localStorage.getItem("sessionInput")
     if(prevSessionString !== null && prevSessionString !== ''){
@@ -92,6 +99,7 @@ $$
 
   return ( 
     <div className="InputPane">
+      <Button className='resetButton' onClick={() => resetText()}>Reset</Button>
       <Textarea className='textarea' placeholder='Enter Markdown Here...' value={theString} onChange={(e) => setString(e)} onKeyDown={(e) => handleTab(e)} />
     </div>
   );
