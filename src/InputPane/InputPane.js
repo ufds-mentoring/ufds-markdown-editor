@@ -99,8 +99,8 @@ $$
 
   return ( 
     <div className="InputPane">
-      <Button className='resetButton' onClick={() => resetText()}>Reset</Button>
-      <Textarea className='textarea' placeholder='Enter Markdown Here...' value={theString} onChange={(e) => setString(e)} onKeyDown={(e) => handleTab(e)} />
+      <Button position="absolute" top="2%" right="5%" zIndex="3" onClick={() => resetText()}>Reset</Button>
+      <Textarea className='textarea' fontSize="1em" placeholder='Enter Markdown Here...' value={theString} onChange={(e) => setString(e)} onKeyDown={(e) => handleTab(e)} />
     </div>
   );
 }
