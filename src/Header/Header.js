@@ -57,15 +57,11 @@ const Header = (props) => {
             commit: "Updated " + props.problemText,
           },
         ],
-      }).then((smth) => {})
-      .catch((error) => {
-        console.log(textValue.substring(textValue.indexOf('pages')))
-        console.log(error)
       })
     }
     else{
       octokit.createOrUpdateTextFile({
-        owner: 'ufds-mentoring',
+        owner: 'ufds-github-bot',
         repo: 'ufds-training',
         branch: (props.problemText).replaceAll(" ", "-"),
         path: [textValue.substring(textValue.indexOf('pages'))],
