@@ -41,7 +41,7 @@ const Header = (props) => {
   function confirmGh(close){
     if(createPR){
       octokit.createPullRequest({
-        owner: 'ufds-github-bot',
+        owner: 'ufds-mentoring',
         repo: 'ufds-training',
         title: props.problemText,
         body: "Editorial for " + props.problemText,
@@ -57,11 +57,15 @@ const Header = (props) => {
             commit: "Updated " + props.problemText,
           },
         ],
+      }).then((smth) => {})
+      .catch((error) => {
+        console.log(textValue.substring(textValue.indexOf('pages')))
+        console.log(error)
       })
     }
     else{
       octokit.createOrUpdateTextFile({
-        owner: 'ufds-github-bot',
+        owner: 'ufds-mentoring',
         repo: 'ufds-training',
         branch: (props.problemText).replaceAll(" ", "-"),
         path: [textValue.substring(textValue.indexOf('pages'))],
