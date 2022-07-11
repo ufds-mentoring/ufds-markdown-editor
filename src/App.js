@@ -11,6 +11,7 @@ function App() {
   const [perfboost, setPerfboost] = useState(false);
   const [sentText, setSentText] = useState('');
   const [tabSize, setTabSize] = useState(4)
+  const [problemText, setProblemText] = useState('')
 
   function changeTabSize(newTabSize){
     setTabSize((!isNaN(Number(newTabSize)) && Number(newTabSize)) >= 0 ? Number(newTabSize) : 4)
@@ -32,10 +33,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header theText={theText} problemText={problemText} />
       <SplitPane split='vertical' style={{position: "relative"}} defaultSize="50%">
         <InputPane changeInputText={changeInputText} perfboost={perfboost} tabSize={tabSize} />
-        <OutputPane inputText={perfboost ? sentText : theText} />
+        <OutputPane inputText={perfboost ? sentText : theText} setProblemText={setProblemText} />
       </SplitPane>
       <Footer perfboost={perfboost} setPerfboost={setPerfboost} clickBoost={performanceHit} changeTabSize={changeTabSize} />
     </div>

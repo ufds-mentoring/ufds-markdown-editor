@@ -29,6 +29,7 @@ const OutputPane = (props) => {
       try{
         let content = fm(str)
         setLesson(content.attributes.title)
+        props.setProblemText(content.attributes.title)
         let authors = 'By ' + content.attributes.authors?.join(", ")
         setAuthorList(authors)
       }
